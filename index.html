@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+</head>
+
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 90vh;
+    }
+
+    .containerData {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="containerData">
+            <div id="qrcodeCadastro"></div>
+            <h2>Cadastro</h2>
+        </div>
+        <div class="containerData">
+            <div id="qrcodePresenca"></div>
+            <h2>Presença</h2>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        // Criar instância do gerador de QR Code
+        let qrC = qrcode(0, 'M');
+        let qrP = qrcode(0, 'M');
+
+        // Configurar o texto ou URL que você deseja codificar no QR Code
+        let textC = "https://www.cursilhoged.unitopconsultoria.com.br";
+        let textP = "https://www.cursilhoged.unitopconsultoria.com.br";
+
+        // Definir o texto ou URL no gerador de QR Code
+        qrC.addData(textC);
+        qrP.addData(textP)
+
+        // Gerar o QR Code
+        qrC.make();
+        qrP.make();
+
+        // Renderizar o QR Code em um elemento HTML
+        let qrCodeElementC = document.getElementById('qrcodeCadastro');
+        qrCodeElementC.innerHTML = qrC.createImgTag(9);
+
+        let qrCodeElementP = document.getElementById('qrcodePresenca');
+        qrCodeElementP.innerHTML = qrP.createImgTag(9);
+    </script>
+</body>
+
+</html>
